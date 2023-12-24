@@ -16,10 +16,10 @@ type book struct {
 // books slice to seed record to book store.
 var books = []book{
 	{ID: "1", Title: "A Day in the Life of Abed Salama", Author: "Nathan Thrall", Price: 56.99},
-	{ID: "1", Title: "King: A life", Author: "Jonathan Eig", Price: 56.99},
-	{ID: "2", Title: "Where we go from here", Author: "Bernie Sanders", Price: 17.99},
-	{ID: "3", Title: "Buiding a dream server", Author: "Yiga ue", Price: 39.99},
-	{ID: "3", Title: "Clean Code ", Author: "Robert C Martin", Price: 39.99},
+	{ID: "2", Title: "King: A life", Author: "Jonathan Eig", Price: 56.99},
+	{ID: "3", Title: "Where we go from here", Author: "Bernie Sanders", Price: 17.99},
+	{ID: "4", Title: "Buiding a dream server", Author: "Yiga ue", Price: 39.99},
+	{ID: "5", Title: "Clean Code ", Author: "Robert C Martin", Price: 39.99},
 }
 
 // getBooks responds with the list of all books as json
