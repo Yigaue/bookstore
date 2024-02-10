@@ -1,3 +1,10 @@
+-- connect on CLI: mysql -u -p
+-- Enter password:
+-- mysql> CREATE DATABASE bookstore;
+-- mysql> USE bookstore;
+-- mysql> SOURCE /path to/bookstore.sql;
+-- mysql> exit (closes connection);
+
 DROP TABLE IF EXISTS book;
 CREATE TABLE book (
   id         INT AUTO_INCREMENT NOT NULL,
