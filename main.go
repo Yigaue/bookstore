@@ -1,20 +1,14 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
+	"github.com/yigaue/bookstore/models"
 )
 
-// book struct represents data about a book record.
-type book struct {
-	ID     string  `json:"id"`
-	Title  string  `json:"title"`
-	Author string  `json:"author"`
-	Price  float64 `json:"price"`
-}
-
 // books slice to seed record to book store.
-var books = []book{
+var books = []models.Book{
 	{ID: "1", Title: "A Day in the Life of Abed Salama", Author: "Nathan Thrall", Price: 56.99},
 	{ID: "2", Title: "King: A life", Author: "Jonathan Eig", Price: 56.99},
 	{ID: "3", Title: "Where we go from here", Author: "Bernie Sanders", Price: 17.99},
@@ -47,7 +41,7 @@ func getBook(c *gin.Context) {
 }
 
 func postBooks(c *gin.Context) {
-	var newBook book
+	var newBook models.Book
 
 	if err := c.BindJSON(&newBook); err != nil {
 		return
