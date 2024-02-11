@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/yigaue/bookstore/database"
 	"github.com/yigaue/bookstore/models"
 )
 
@@ -22,6 +23,7 @@ func getBooks(c *gin.Context) {
 }
 
 func main() {
+	database.DBConnect()
 	router := gin.Default()
 	router.GET("/books", getBooks)
 	router.GET("/books/:id", getBook)
