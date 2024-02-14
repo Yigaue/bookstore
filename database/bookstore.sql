@@ -1,4 +1,4 @@
--- connect on CLI: mysql -u -p
+-- connect on CLI: mysql -u dbuser -p
 -- Enter password:
 -- mysql> CREATE DATABASE bookstore;
 -- mysql> USE bookstore;

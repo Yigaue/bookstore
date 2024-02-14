@@ -3,14 +3,14 @@ package database
 import (
 	"database/sql"
 	"fmt"
+	"github.com/joho/godotenv"
 	"log"
 	"os"
-	"github.com/joho/godotenv"
 
 	"github.com/go-sql-driver/mysql"
 )
 
-func DBConnect() {
+func DBConnect() *sql.DB {
 	err := godotenv.Load()
 
 	if err != nil {
@@ -18,10 +18,10 @@ func DBConnect() {
 	}
 
 	config := mysql.Config{
-		User: os.Getenv("DBUSER"),
+		User:   os.Getenv("DBUSER"),
 		Passwd: os.Getenv("DBPASS"),
-		Net: "tcp",
-		Addr: os.Getenv("DBHOST"),
+		Net:    "tcp",
+		Addr:   os.Getenv("DBHOST"),
 		DBName: os.Getenv("DBNAME"),
 	}
 
@@ -35,4 +35,5 @@ func DBConnect() {
 	}
 
 	fmt.Println("DB connection successful")
+	return db
 }
