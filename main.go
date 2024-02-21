@@ -15,7 +15,7 @@ func main() {
 	router := gin.Default()
 	router.GET("/books", getBooks)
 	router.GET("/books/:id", getBook)
-	router.POST("/books", postBooks)
+	router.POST("/books", postBook)
 	router.DELETE("/books/:id", deleteBook)
 	router.Run("localhost:8080")
 }
@@ -66,7 +66,7 @@ func getBook(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, book)
 }
 
-func postBooks(c *gin.Context) {
+func postBook(c *gin.Context) {
 	db := database.DBConnect()
 	var newBook models.Book
 	if err := c.BindJSON(&newBook); err != nil {
@@ -74,7 +74,7 @@ func postBooks(c *gin.Context) {
 	}
 	row, err := db.Exec("INSERT INTO book (title, author, price) VALUES (?, ?, ?)", newBook.Title, newBook.Author, newBook.Price)
 	if err != nil {
-		fmt.Errorf("postBooks %v", err)
+		fmt.Errorf("postBook %v", err)
 	}
 
 	id, err := row.LastInsertId()
@@ -89,17 +89,13 @@ func postBooks(c *gin.Context) {
 }
 
 func deleteBook(c *gin.Context) {
-	id := c.Param("id")
 	db := database.DBConnect()
+	id := c.Param("id")
 	_, err := db.Exec("DELETE FROM book WHERE id = ?", id)
 
 	if err != nil {
-		fmt.Errorf("deleteBooks %v", err)
+		fmt.Errorf("deleteBook %v", err)
 	}
 
-	if err != nil {
-		fmt.Errorf("Error getting lastInsertedId deleteBook %v", err)
-	}
-
-	c.IndentedJSON(http.StatusOK, "Book deleted successful")
+	c.IndentedJSON(http.StatusOK, "Book deleted successfully")
 }
