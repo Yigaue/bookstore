@@ -31,7 +31,7 @@ func main() {
 	router := gin.Default()
 	router.GET("/books", getBooks)
 	router.GET("/books/:id", getBook)
-	router.POST("/books", postBooks)
+	router.POST("/books", postBook)
 	router.Run("localhost:8080")
 }
 
@@ -46,7 +46,7 @@ func getBook(c *gin.Context) {
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "book not found"})
 }
 
-func postBooks(c *gin.Context) {
+func postBook(c *gin.Context) {
 	var newBook book
 
 	if err := c.BindJSON(&newBook); err != nil {
